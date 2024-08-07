@@ -4,7 +4,7 @@ import { BiPhone, BiMap, BiGlobe, BiEnvelope } from 'react-icons/bi';
 const ContactsLocation: React.FC = () => {
     const contacts = [
         {
-            name: 'Campus Emergency and Security',
+            name: 'NUS Emergency Number (Campus Emergency and Security)',
             website: 'https://uci.nus.edu.sg/campus-emergency-security/',
             contact: '68741616',
             email: 'ocssec@nus.edu.sg',
@@ -37,6 +37,13 @@ const ContactsLocation: React.FC = () => {
             contact: '65162376',
             email: 'uhc_counselling@nus.edu.sg',
             location: '20 Lower Kent Ridge Rd, Singapore 119080',
+        },
+        {
+            name: 'NUS Whistleblwing Unit',
+            website: '',
+            contact: '65166209',
+            email: 'whistleblow@nus.edu.sg',
+            location: 'Office of Risk Management and Compliance',
         },
         {
             name: 'Fire Command Centre (FCC)',
