@@ -51,6 +51,9 @@ const Sidebar: React.FC = () => {
                 <Link className="sidebar__link relative my-4" href="/residence-matters">
                     Residence Matters
                 </Link>
+                <Link className="sidebar__link relative my-4" href="/facilities">
+                    PGPR Facilities
+                </Link>
             </div>
         </div>
     );

@@ -24,6 +24,7 @@ const EventPage: React.FC = () => {
 
   return (
     <div className="container mx-auto p-8">
+      <h1 className="text-5xl font-bold mt-4 mb-12 text-center text-blackish">Cluster Events</h1>
       {events.map((event, index) => (
         <div key={index} className="flex flex-wrap mb-12">
           <div className="w-full md:w-1/3 p-4">
