@@ -214,7 +214,7 @@ const FacilitiesLocation: React.FC = () => {
 
     return (
         <div className="p-8 bg-gray-100">
-            <h1 className="text-5xl font-bold mt-4 mb-12 text-center text-green-800">Facilities</h1>
+            <h1 className="text-5xl font-bold mt-4 mb-12 text-center">Facilities</h1>
             {facilities.map((facility, index) => (
                 <div key={index} className="mb-8 mx-4 p-8 border rounded-lg shadow-lg bg-white">
                     <h2 className="text-3xl font-bold text-green-700 mb-4">{facility.facility}</h2>

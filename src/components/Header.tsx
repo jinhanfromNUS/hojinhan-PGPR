@@ -5,7 +5,7 @@ import { BiLink } from 'react-icons/bi';
 import { BsInstagram } from 'react-icons/bs';
 
 const Header: React.FC = () => {
-    const changeableItems = ['Feedback Form', 'Events', 'Contacts', 'Laundry', 'Parcel', 'Mail', 'Locations'];
+    const changeableItems = ['Feedback Form', 'Cluster Events', 'Contacts', 'Laundry', 'Parcel', 'Mail', 'Locations', 'Gym', 'Badminton Courts', 'Dance Studio', 'Karaoke', 'Green Corner'];
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
