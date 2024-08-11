@@ -4,11 +4,11 @@ import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 const EventPage: React.FC = () => {
   const events = [
     {
-      title: 'Cluster Event 1: Goodie Bag',
-      date: '18th August 2024',
+      title: 'Cluster Event 1: Chill Chat and Goodies',
+      date: '17th August 2024',
       time: '11:00 AM - 4:00 PM',
       venue: 'Block 8 Level 4 Pantry',
-      description: 'Collect your FREE goodie bag :O and let\'s have a chill chat!',
+      description: 'Let\'s have a chill and chat and collect your COMPLEMENTARY Goodie bag :O!',
       image: '/Testimonial__Background.jpg'
     },
     // {
