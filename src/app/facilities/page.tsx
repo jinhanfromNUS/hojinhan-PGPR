@@ -213,49 +213,51 @@ const FacilitiesLocation: React.FC = () => {
     ];
 
     return (
-        <div className="p-8 bg-gray-100">
-            <h1 className="text-5xl font-bold mt-4 mb-12 text-center">Facilities</h1>
-            {facilities.map((facility, index) => (
-                <div key={index} className="mb-8 mx-4 p-8 border rounded-lg shadow-lg bg-white">
-                    <h2 className="text-3xl font-bold text-green-700 mb-4">{facility.facility}</h2>
-                    {facility.location && facility.location !== '-' && (
-                        <div className="text-lg text-gray-700 flex items-center">
-                            <BiMap className="mr-2" />
-                            <div>
-                                {facility.location.split('\n').map((line, i) => (
-                                    <p key={i}>{line}</p>
-                                ))}
+        <div className="p-8 bg-gradient-to-r from-blue-50 via-purple-100 to-green-50 min-h-screen">
+            <h1 className="text-6xl font-extrabold mt-4 mb-12 text-center text-gray-800">Campus Facilities</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                {facilities.map((facility, index) => (
+                    <div key={index} className="mb-8 p-6 border-2 border-gray-300 rounded-lg shadow-lg bg-white transform hover:scale-105 transition-transform duration-300">
+                        <h2 className="text-4xl font-bold text-green-700 mb-4">{facility.facility}</h2>
+                        {facility.location && facility.location !== '-' && (
+                            <div className="text-lg text-gray-600 flex items-center mb-2">
+                                <BiMap className="mr-2 text-blue-500" />
+                                <div>
+                                    {facility.location.split('\n').map((line, i) => (
+                                        <p key={i}>{line}</p>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    {facility.operatingHours.length > 0 && (
-                        <div className="text-lg text-gray-700 flex items-center">
-                            <BiTime className="mr-2 text-gray-600" />
-                            <div>
-                                {facility.operatingHours.map((hours, i) => (
-                                    <p key={i} className="mb-0">{hours}</p>
-                                ))}
+                        )}
+                        {facility.operatingHours.length > 0 && (
+                            <div className="text-lg text-gray-600 flex items-center mb-2">
+                                <BiTime className="mr-2 text-purple-500" />
+                                <div>
+                                    {facility.operatingHours.map((hours, i) => (
+                                        <p key={i} className="mb-0">{hours}</p>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    {facility.website && (
-                        <p className="text-lg text-gray-700 flex items-center">
-                            <BiGlobe className="mr-2" /> <a href={facility.website} className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">{facility.website}</a>
-                        </p>
-                    )}
-                    {facility.description.length > 0 && (
-                        <div className="text-lg text-gray-700 flex items-start mb-4">
-                            <BiDetail className="mr-2 text-gray-600 mt-1" />
-                            <div>
-                                {facility.description.map((desc, i) => (
-                                    // <p key={i} className={i === 0 ? "" : "ml-0"}>{i + 1}. {desc}</p>
-                                    <p> {desc}</p>
-                                ))}
+                        )}
+                        {facility.website && (
+                            <p className="text-lg text-gray-600 flex items-center mb-2">
+                                <BiGlobe className="mr-2 text-green-500" />
+                                <a href={facility.website} className="text-blue-500 underline hover:text-blue-700 transition-colors duration-300" target="_blank" rel="noopener noreferrer">{facility.website}</a>
+                            </p>
+                        )}
+                        {facility.description.length > 0 && (
+                            <div className="text-lg text-gray-600 flex items-start">
+                                <BiDetail className="mr-2 text-pink-500 mt-1" />
+                                <div>
+                                    {facility.description.map((desc, i) => (
+                                        <p key={i} className="ml-4">{desc}</p>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
-                </div>
-            ))}
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
