@@ -1,262 +1,220 @@
-import React from 'react';
-import { BiMap, BiDetail, BiTime, BiGlobe } from 'react-icons/bi';
+"use client"
+
+import React, { useState } from 'react';
+import { BiMap, BiTime, BiGlobe, BiDetail, BiChevronDown, BiChevronUp } from 'react-icons/bi';
+import { FaFutbol, FaSwimmer, FaUtensils, FaStore, FaBook, FaChair, FaPrint, FaMusic, FaMicrophone, FaPaintBrush, FaChild, FaPaw, FaTshirt } from 'react-icons/fa';
+
+// Accordion Component for handling collapsible content
+const Accordion = ({ title, children }: { title: string, children: React.ReactNode }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <div className="border border-indigo-100 rounded-lg">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex justify-between items-center p-3 bg-indigo-50/70 hover:bg-indigo-100/80 transition-colors rounded-t-lg"
+            >
+                <span className="font-semibold text-indigo-800">{title}</span>
+                {isOpen ? <BiChevronUp className="text-indigo-600" /> : <BiChevronDown className="text-indigo-600" />}
+            </button>
+            <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-96 p-3' : 'max-h-0'}`}>
+                {children}
+            </div>
+        </div>
+    );
+};
 
 const FacilitiesLocation: React.FC = () => {
+    // Data is now enriched with a category and a primary icon for each facility
     const facilities = [
         {
-            facility: 'Laundry',
-            location: '(Preferred) Block 5 Level 2, Block 10 Level 2, Block 2 Level 2.',
-            operatingHours: ['(Daily) 24/7'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/laundry',
-            description: [
-                'Detergent is not provided.'
-            ],
-        },
-        {
             facility: 'PGPR Gymnasium',
+            category: 'Sports & Recreation',
+            icon: <FaSwimmer />,
             location: 'PGPR Plaza',
             operatingHours: ['(Daily) 24/7'],
             website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities',
-            description: [
-                'Please exchange your student pass at the Security Desk (Foyer)',
-                'First come first served and subject to event booking'
-            ],
+            description: ['Requires student pass exchange at the Security Desk.', 'First-come, first-served basis and subject to event bookings.'],
         },
         {
-            facility: 'Badminton Courts',
-            location: 'Multi-purpose Hall (MPH)',
-            operatingHours: ['(Daily) 0800 - 2300'],
+            facility: 'Badminton & Basketball',
+            category: 'Sports & Recreation',
+            icon: <FaFutbol />,
+            location: 'Multi-purpose Hall (MPH) & Outdoor Courts',
+            operatingHours: ['(Daily) 08:00 - 23:00'],
             website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities',
-            description: [
-                'Please exchange your student pass at the Security Desk (Foyer)',
-                'First come first served and subject to event booking'
-            ],
+            description: ['MPH requires pass exchange; outdoor courts do not.'],
         },
         {
             facility: 'Dance Studio',
+            category: 'Sports & Recreation',
+            icon: <FaMusic />,
             location: 'Block 7/8 (Level B1)',
-            operatingHours: ['Unknown'],
+            operatingHours: ['(Daily) 09:00 - 23:00'],
             website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities',
-            description: [
-                'Please approach the Security team at Fire Command Centre (Block 5 Level B1) to exchange your student pass',
-                'No sound system or stereo equipment will be provided. All users to bring your own sound system'
-            ],
+            description: ['Requires pass exchange at Fire Command Centre.', 'Bring your own sound system.'],
         },
         {
-            facility: 'Open and Caged Basketball Courts, Tennis & Practice Courts and Table Tennis',
-            location: '-',
-            operatingHours: ['(Daily) 0800 - 2300'],
+            facility: 'Karaoke Room',
+            category: 'Sports & Recreation',
+            icon: <FaMicrophone />,
+            location: 'Block 3 Level 2 (Nightingale Limelight)',
+            operatingHours: ['(Daily) 09:00 - 23:00'],
+            website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities/karaoke-@-nightingale-limelight',
+            description: ['Booking is mandatory via Calendly.', 'Penalties apply for using without booking.'],
+            proTip: "Expert bathroom singer incoming."
+        },
+        {
+            facility: 'Music Rooms',
+            category: 'Sports & Recreation',
+            icon: <FaMusic />,
+            location: '(Block 3 & 10)',
+            operatingHours: ['(Daily) 09:00 - 23:00'],
+            website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities/music-room-@-r1-r3',
+            description: ['See website for booking and restrictions.'],
+        },
+        {
+            facility: 'Aircon Food Court',
+            category: 'Food & Convenience',
+            icon: <FaUtensils />,
+            location: 'PGPR Plaza',
+            operatingHours: ['(Daily) 07:00 - 20:00'],
+            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
+            description: ["The main canteen in PGP."],
+        },
+        {
+            facility: 'Supersnacks',
+            category: 'Food & Convenience',
+            icon: <FaUtensils />,
+            location: 'Above R3 Lounge',
+            operatingHours: ['(Mon-Fri) 11:00 – 02:00', '(Sat-Sun, PH) 18:00 – 02:00'],
+            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
+            description: ["The only supper place in PGP."],
+        },
+        {
+            facility: 'Octobox',
+            category: 'Food & Convenience',
+            icon: <FaStore />,
+            location: '',
+            operatingHours: ['Store: 24/7', 'Grocery Section: 10:00 - 20:00'],
+            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
+            description: ["Automated store"],
+        },
+        {
+            facility: 'Laundry Rooms',
+            category: 'General Amenities',
+            icon: <FaTshirt />,
+            location: '(Preferred) Block 5, 10, & 2 (Level 2)',
+            operatingHours: ['(Daily) 24/7'],
+            website: 'https://nus.edu.sg/osa/pgpr/facilities/laundry',
+            description: ['Detergent is not provided.'],
+        },
+        {
+            facility: 'Printing & Photocopying',
+            category: 'General Amenities',
+            icon: <FaPrint />,
+            location: '(Preferred) Entrance of Pioneer House, Block 8 (Level B1)',
+            operatingHours: ['(Daily) 24/7'],
+            website: '',
+            description: ['Costs $0.04 per B&W page.'],
+        },
+        {
+            facility: 'BBQ Pits',
+            category: 'General Amenities',
+            icon: <FaPaintBrush />,
+            location: 'Various Locations',
+            operatingHours: ['N/A'],
             website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities',
+            description: ['Book via PGP Office of Housing Services (at least 3 working days in advance).'],
+        },
+        {
+            facility: 'Study Rooms & Lounges',
+            category: 'Study & Lounges',
+            icon: <FaBook />,
+            location: 'Various Locations',
+            operatingHours: ['Generally 07:00 - 23:00'],
+            website: 'https://nus.edu.sg/osa/pgpr/facilities/pgp-residential-lounges',
             description: [
-                'No exchange pass is needed'
+                'Emerald Realm (R2 Lounge): Block 5, Level 2',
+                'Jade Arcade (R3 Lounge): Block 10, Level 2',
+                'The Soul Library: Block 4, Level 3'
+            ],
+            studyRooms: [
+                'Viridian, Limeade, Mint, Verdun (Block 1, L2)',
+                'Juniper (Block 2, L2)', 'Harlequin (Block 3, L2)',
+                'Fern, Castleton, Evergreen (Block 4, L2/L3)',
+                'Jade (Block 10, L2)', 'Pine, Olive (Block 11, L1)',
+                'Sage (Block 13, L1)'
             ]
         },
         {
-            facility: 'BBQ Pit & Open Air Amphitheatre',
-            location: '-',
-            operatingHours: [],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities',
-            description: [
-                'Please reach out to PGP Office of Housing Services to reserve your BBQ pits (at least 3 working days in advance)'
-            ],
+            facility: "Kids Playroom",
+            category: 'General Amenities',
+            icon: <FaChild />,
+            location: 'Block 13, Level 1 (Georgie\'s Wonderland)',
+            operatingHours: ['(Daily) 07:00 - 23:00'],
+            website: "https://nus.edu.sg/osa/pgpr/facilities/kids-playroom-georgie's-wonderland",
+            proTip: "Come here to seek your inner child :D"
         },
         {
-            facility: '24-hour Self Printing & Photocopying',
-            location: '(Preferred) Entrance of Pioneer House, Block 8 (Level B1)',
-            operatingHours: ['(Daily) 24/7'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities',
-            description: [
-                'It costs money lol, but I forgot how much (i think $0.03 per black and white page)'
-            ],
-        },
-        {
-            facility: 'Aircon Food Court @ PGPR Plaza',
-            location: '',
-            operatingHours: ['(Daily) 0700 - 2000'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
-            description: [
-                'PGPR Mala is good. Prob the best in NUS.'
-            ],
-        },
-        {
-            facility: 'Supersnacks @ PGPR',
-            location: '',
-            operatingHours: ['Last order 0130', '(Mon to Fri) 1100 – 0200', '(Sat to Sun, PH) 1800 – 0200'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
-            description: [
-            ],
-        },
-        {
-            facility: 'Pick & GO Unmanned Convenience Store @ My Village',
-            location: '',
-            operatingHours: ['(Daily) 24/7 (Grocery: 10.00am – 8.00pm)'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
-            description: [
-                'Contact: +65 6702 4231'
-            ],
-        },
-        {
-            facility: 'Rice and Stuff @ My Village',
-            location: '',
-            operatingHours: ['(Daily) 0700 - 2000'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
-            description: [
-            ],
-        },
-        {
-            facility: 'Study Rooms',
-            location: '',
-            operatingHours: [],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/pgp-residential-lounges',
-            description: [
-                'Viridian Study Room (Block 1 Level 2)',
-                'Limeade Study Room (Block 1 Level 2)',
-                'Mint Study Room (Block 1 Level 2)',
-                'Verdun Study Room (Block 1 Level 2)',
-                'Juniper Study Room (Block 2 Level 2)',
-                'Harlequin Study Room (Block 3 Level 2)',
-                'Fern Study Room (Block 4 Level 2)',
-                'Castleton Study Room (Block 4 Level 2)',
-                'Evergreen Study Room (Block 4 Level 3)',
-                'Jade Study Room (Block 10 Level 2)',
-                'Pine Study Room (Block 11 Level 1)',
-                'Olive Study Room (Block 11 Level 1)',
-                'Sage Study Room (Block 13 Level 1)'
-            ],
-        },
-        {
-            facility: 'Emerald Realm (Residence 2 Lounge)',
-            location: 'Block 5 Level 2',
-            operatingHours: ['(Daily) 0700 - 2300 (But seriously, I have seen people studying there until morning, so I think it is fine to overstay lol)'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
-            description: [
-                'Explore the perfect study haven and private meeting space "Boardroom" within our Emerald Realm! Whether you\'re seeking a serene study spot or a private area for brainstorming sessions and hybrid meetings, we\'ve got you covered.'
-            ],
-        },
-        {
-            facility: 'Jade Arcade & Tabletop (Residence 3 Lounge)',
-            location: 'Block 10 Level 2 (Above Super Snacks)',
-            operatingHours: ['(Daily) 0700 - 2300'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/food-groceries-and-daily-necessities',
-            description: [
-                'It\'s the ultimate spot to unwind, have fun, and focus on your studies. This gaming lounge has incredible amenities: a Board games Café, Pool Table, Darts, Claw Machine, Basketball Machine, Football Machine, and cozy study tables and chairs.'
-            ],
-        },
-        {
-            facility: 'The Soul Library',
-            location: 'Block 4 Level 3',
-            operatingHours: ['(Daily) 0700 - 2300'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/aromatherapy-room-the-soul-library',
-            description: [
-                'Cool library for study. Or for free A/C.'
-            ],
-        },
-        {
-            facility: 'The Green Corner @ PGPR',
-            location: 'Block 11 Level 1 (Outdoor Verandah)',
-            operatingHours: ['(Daily) 24/7'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/green-committee',
-            description: [
-                'Take a fresh breath here!'
-            ],
-        },
-        {
-            facility: 'Bunnies @ Flopper\'s Dungeon',
-            location: 'Block 4 Level 3 (Flopper’s Dungeon room)',
-            operatingHours: [],
+            facility: 'Flopper\'s Dungeon (Bunnies)',
+            category: 'General Amenities',
+            icon: <FaPaw />,
+            location: 'Block 4, Level 3',
+            operatingHours: ['Not open to public'],
             website: 'https://nus.edu.sg/osa/pgpr/facilities/bunnies-@-flopper\'s-dungeon',
-            description: [
-                'Not open to public.',
-                'More information on the next Volunteers Information Session & Handling Workshop will be shared nearer to date.',
-                'Aww my friends\' pic is up there lol',
-                'I wanna see the bunnies too, but even cluster leader has no access :('
-            ],
-        },
-        {
-            facility: 'Kids Playroom: Georgie\'s Wonderland',
-            location: 'Block 13 Level 1',
-            operatingHours: ['(Daily) 0700 - 2300'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/kids-playroom-georgie\'s-wonderland',
-            description: [
-                'Come here to seek your true self :D'
-            ],
-        },
-        {
-            facility: 'Karaoke @ Nightingale Limelight',
-            location: 'Block 3 Level 2 (Nightingale Limelight)',
-            operatingHours: ['(Daily) 0900 - 2300'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities/karaoke-@-nightingale-limelight',
-            description: [
-                'Book here: https://calendly.com/pgpresidence/karaoke',
-                'Any resident found using the karaoke system without a prior booking will be subjected to penalties. Non-compliance may result in suspension of facility privileges. ',
-                'hehehe, expert bathroom singer incoming.'
-            ],
-        },
-        {
-            facility: 'Music Rooms: Audio Alchemy I & II',
-            location: '(Block 3 Level 3): Audio Alchemy I, (Block 10 Level 2): Audio Alchemy II',
-            operatingHours: ['(Daily) 0900 - 2300'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities/music-room-@-r1-r3',
-            description: [
-                'All crucial information, including restrictions and bookings is accessible using the link above.'
-            ],
-        },
-        {
-            facility: 'Boardroom',
-            location: 'Block 5 Level 2',
-            operatingHours: ['(Daily) 1000 - 2300'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/sports-facilities-and-amenities/boardroom',
-            description: [
-                'I never use this before but you can access the information using the link above.'
-            ],
-        },
+            description: ['Access is via volunteer programs only. Look out for information sessions.'],
+            proTip: 'Even cluster leaders have no access :('
+        }
     ];
 
+    const categories = ['Sports & Recreation', 'Food & Convenience', 'Study & Lounges', 'General Amenities'];
+
     return (
-        <div className="p-8 bg-gradient-to-r from-blue-50 via-purple-100 to-green-50 min-h-screen">
-            <h1 className="text-6xl font-extrabold mt-4 mb-12 text-center text-gray-800">Campus Facilities</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                {facilities.map((facility, index) => (
-                    <div key={index} className="mb-8 p-6 border-2 border-gray-300 rounded-lg shadow-lg bg-white transform hover:scale-105 transition-transform duration-300">
-                        <h2 className="text-4xl font-bold text-green-700 mb-4">{facility.facility}</h2>
-                        {facility.location && facility.location !== '-' && (
-                            <div className="text-lg text-gray-600 flex items-center mb-2">
-                                <BiMap className="mr-2 text-blue-500" />
-                                <div>
-                                    {facility.location.split('\n').map((line, i) => (
-                                        <p key={i}>{line}</p>
-                                    ))}
-                                </div>
+        <div className="bg-slate-50 min-h-screen p-4 sm:p-8">
+            <div className="max-w-6xl mx-auto">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-16 bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                    Campus Facilities
+                </h1>
+
+                <div className="space-y-12">
+                    {categories.map((category) => (
+                        <section key={category}>
+                            <h2 className="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-indigo-200 pb-2">{category}</h2>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                {facilities.filter(f => f.category === category).map((facility) => (
+                                    <div key={facility.facility} className="bg-white rounded-2xl shadow-xl flex flex-col p-6 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center text-3xl text-indigo-600">{facility.icon}</div>
+                                            <h3 className="text-2xl font-bold text-slate-800">{facility.facility}</h3>
+                                        </div>
+
+                                        <div className="flex-grow space-y-3 pl-4 border-l-2 border-slate-100 ml-7">
+                                            {facility.location && <div className="flex items-start gap-3"><BiMap className="mt-1 text-slate-400" /> <span className="text-slate-600">{facility.location}</span></div>}
+                                            {facility.operatingHours.length > 0 && <div className="flex items-start gap-3"><BiTime className="mt-1 text-slate-400" /> <div>{facility.operatingHours.map(h => <p key={h} className="text-slate-600">{h}</p>)}</div></div>}
+                                            <div className="flex items-start gap-3"><BiDetail className="mt-1 text-slate-400" /> <ul className="text-slate-600">{facility.description?.map(d => <li key={d}>{d}</li>)}</ul></div>
+                                            {facility.proTip && <p className="italic text-indigo-700 bg-indigo-50 p-2 rounded-md">"{facility.proTip}"</p>}
+                                            {facility.studyRooms && (
+                                                <Accordion title="View All Study Room Locations">
+                                                    <ul className="list-disc list-inside text-slate-600 space-y-1 text-sm columns-2">
+                                                        {facility.studyRooms.map(room => <li key={room}>{room}</li>)}
+                                                    </ul>
+                                                </Accordion>
+                                            )}
+                                        </div>
+
+                                        {facility.website && (
+                                            <div className="mt-6 pt-4 border-t border-slate-200/80 text-center">
+                                                <a href={facility.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
+                                                    <BiGlobe /><span>Official Info</span>
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
-                        )}
-                        {facility.operatingHours.length > 0 && (
-                            <div className="text-lg text-gray-600 flex items-center mb-2">
-                                <BiTime className="mr-2 text-purple-500" />
-                                <div>
-                                    {facility.operatingHours.map((hours, i) => (
-                                        <p key={i} className="mb-0">{hours}</p>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                        {facility.website && (
-                            <p className="text-lg text-gray-600 flex items-center mb-2">
-                                <BiGlobe className="mr-2 text-green-500" />
-                                <a href={facility.website} className="text-blue-500 underline hover:text-blue-700 transition-colors duration-300" target="_blank" rel="noopener noreferrer">{facility.website}</a>
-                            </p>
-                        )}
-                        {facility.description.length > 0 && (
-                            <div className="text-lg text-gray-600 flex items-start">
-                                <BiDetail className="mr-2 text-pink-500 mt-1" />
-                                <div>
-                                    {facility.description.map((desc, i) => (
-                                        <p key={i} className="ml-4">{desc}</p>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                ))}
+                        </section>
+                    ))}
+                </div>
             </div>
         </div>
     );
