@@ -192,7 +192,7 @@ const FacilitiesLocation: React.FC = () => {
                                             {facility.location && <div className="flex items-start gap-3"><BiMap className="mt-1 text-slate-400" /> <span className="text-slate-600">{facility.location}</span></div>}
                                             {facility.operatingHours.length > 0 && <div className="flex items-start gap-3"><BiTime className="mt-1 text-slate-400" /> <div>{facility.operatingHours.map(h => <p key={h} className="text-slate-600">{h}</p>)}</div></div>}
                                             <div className="flex items-start gap-3"><BiDetail className="mt-1 text-slate-400" /> <ul className="text-slate-600">{facility.description?.map(d => <li key={d}>{d}</li>)}</ul></div>
-                                            {facility.proTip && <p className="italic text-indigo-700 bg-indigo-50 p-2 rounded-md">"{facility.proTip}"</p>}
+                                            {facility.proTip && <p className="italic text-indigo-700 bg-indigo-50 p-2 rounded-md">'{facility.proTip}'</p>}
                                             {facility.studyRooms && (
                                                 <Accordion title="View All Study Room Locations">
                                                     <ul className="list-disc list-inside text-slate-600 space-y-1 text-sm columns-2">

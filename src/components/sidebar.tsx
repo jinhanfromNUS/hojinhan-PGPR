@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // Import usePathname
 import { FaBars, FaTimes, FaHome, FaUser, FaPhone, FaBuilding, FaImages } from 'react-icons/fa';
 
-// Structured array for navigation links makes the code cleaner
 const navLinks = [
     { href: '/', text: 'Home', icon: <FaHome /> },
     { href: '/me', text: 'About Me', icon: <FaUser /> },

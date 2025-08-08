@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 
 const PastClusterEventPage: React.FC = () => {
@@ -74,7 +75,7 @@ const PastClusterEventPage: React.FC = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 {(groupedEvents[Number(academicYear)] as typeof events).map((event, index) => (
                   <div key={index} className="bg-slate-800/50 rounded-2xl shadow-lg border border-slate-700 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/50 hover:shadow-indigo-500/10 hover:-translate-y-1">
-                    <img
+                    <Image
                       src={event.image}
                       alt={event.title}
                       className="object-cover w-full aspect-video rounded-t-2xl"
