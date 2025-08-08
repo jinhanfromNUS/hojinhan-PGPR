@@ -152,7 +152,7 @@ const FacilitiesLocation: React.FC = () => {
             icon: <FaChild />,
             location: 'Block 13, Level 1 (Georgie\'s Wonderland)',
             operatingHours: ['(Daily) 07:00 - 23:00'],
-            website: "https://nus.edu.sg/osa/pgpr/facilities/kids-playroom-georgie's-wonderland",
+            website: "https://nus.edu.sg/osa/pgpr/facilities/pgp-residential-lounges",
             proTip: "Come here to seek your inner child :D"
         },
         {
@@ -161,7 +161,7 @@ const FacilitiesLocation: React.FC = () => {
             icon: <FaPaw />,
             location: 'Block 4, Level 3',
             operatingHours: ['Not open to public'],
-            website: 'https://nus.edu.sg/osa/pgpr/facilities/bunnies-@-flopper\'s-dungeon',
+            website: 'https://www.nus.edu.sg/osa/pgpr/sub-committees-interest-groups/bunnies-@-flopper\'s-dungeon',
             description: ['Access is via volunteer programs only. Look out for information sessions.'],
             proTip: 'Even cluster leaders have no access :('
         }
@@ -192,8 +192,7 @@ const FacilitiesLocation: React.FC = () => {
                                             {facility.location && <div className="flex items-start gap-3"><BiMap className="mt-1 text-slate-400" /> <span className="text-slate-600">{facility.location}</span></div>}
                                             {facility.operatingHours.length > 0 && <div className="flex items-start gap-3"><BiTime className="mt-1 text-slate-400" /> <div>{facility.operatingHours.map(h => <p key={h} className="text-slate-600">{h}</p>)}</div></div>}
                                             <div className="flex items-start gap-3"><BiDetail className="mt-1 text-slate-400" /> <ul className="text-slate-600">{facility.description?.map(d => <li key={d}>{d}</li>)}</ul></div>
-                                            {facility.proTip && <p className="italic text-indigo-700 bg-indigo-50 p-2 rounded-md">'{facility.proTip}'</p>}
-                                            {facility.studyRooms && (
+                                            {facility.proTip && <p className="italic text-indigo-700 bg-indigo-50 p-2 rounded-md">{`'${facility.proTip}'`}</p>}                                            {facility.studyRooms && (
                                                 <Accordion title="View All Study Room Locations">
                                                     <ul className="list-disc list-inside text-slate-600 space-y-1 text-sm columns-2">
                                                         {facility.studyRooms.map(room => <li key={room}>{room}</li>)}
