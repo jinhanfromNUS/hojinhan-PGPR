@@ -72,24 +72,27 @@ const Me: React.FC = () => {
 
                 {/* --- Details Grid --- */}
                 <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* "What is a Cluster Leader?" Card */}
-                    <div className="bg-white rounded-2xl shadow-xl p-7 border-t-4 border-indigo-400">
-                         <h2 className="text-2xl font-bold text-slate-800 mb-3">{detailsSections[0].title}</h2>
-                         <p className="text-slate-600 leading-relaxed">{detailsSections[0].description}</p>
-                    </div>
+                    {detailsSections.map((section) => (
+                        <div key={section.title} className="bg-white rounded-2xl shadow-xl p-7 border-t-4 border-indigo-400">
+                            <h2 className="text-2xl font-bold text-slate-800 mb-4">{section.title}</h2>
+                            
+                            {/* Conditionally render based on what data is available */}
+                            {section.description && (
+                                <p className="text-slate-600 leading-relaxed">{section.description}</p>
+                            )}
 
-                    {/* "How I Can Help" List Card */}
-                    <div className="bg-white rounded-2xl shadow-xl p-7 border-t-4 border-indigo-400">
-                         <h2 className="text-2xl font-bold text-slate-800 mb-4">{detailsSections[1].title}</h2>
-                         <ul className="space-y-3">
-                            {detailsSections[1].points.map((point, index) => (
-                                <li key={index} className="flex items-start gap-3">
-                                    <BiRightArrowCircle className="text-indigo-500 text-xl mt-0.5 flex-shrink-0" />
-                                    <span className="text-slate-600 leading-relaxed">{point}</span>
-                                </li>
-                            ))}
-                         </ul>
-                    </div>
+                            {section.points && (
+                                <ul className="space-y-3">
+                                    {section.points.map((point, index) => (
+                                        <li key={index} className="flex items-start gap-3">
+                                            <BiRightArrowCircle className="text-indigo-500 text-xl mt-0.5 flex-shrink-0" />
+                                            <span className="text-slate-600 leading-relaxed">{point}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    ))}
                 </div>
 
             </div>
