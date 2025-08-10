@@ -171,7 +171,7 @@ const FacilitiesLocation: React.FC = () => {
 
     return (
         <div className="bg-slate-50 min-h-screen p-4 sm:p-8">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-16 bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
                     Campus Facilities
                 </h1>
