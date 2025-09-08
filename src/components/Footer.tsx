@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
               PGPR<span className="bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">.</span>
             </h3>
             <p className="max-w-xs text-slate-400">
-              Your guide to life at Prince George's Park Residence, National University of Singapore.
+              Your guide to life at Prince George&apos;s Park Residence, National University of Singapore.
             </p>
             <p className="max-w-xs text-slate-400">
               Created by Ho Jin Han.
