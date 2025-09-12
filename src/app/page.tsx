@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <InfoSection />
-      <FeedbackForm />
+      {/* <FeedbackForm /> */}
       {/* <Hero /> */}
       {/* <NewProducts /> */}
     </main>

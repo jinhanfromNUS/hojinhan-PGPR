@@ -67,7 +67,7 @@ const Sidebar: React.FC = () => {
             >
                 {/* Sidebar Header */}
                 <div className="p-6 border-b border-slate-800">
-                    <h2 className="text-2xl font-bold bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
+                    <h2 className="ml-14 text-2xl font-bold bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
                         PGPR Guide
                     </h2>
                 </div>

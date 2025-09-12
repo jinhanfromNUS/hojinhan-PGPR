@@ -41,12 +41,13 @@ const Header: React.FC = () => {
     }, [changeableItems.length]);
 
     return (
-        // --- KEY CHANGES HERE ---
         <header className="py-10 relative bg-slate-900 border-b border-slate-800 px-4 sm:px-6 lg:px-8 flex items-center justify-end overflow-hidden">
             
-            <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-xl sm:text-2xl md:text-3xl font-medium text-slate-400 whitespace-nowrap">
-                <span className="hidden sm:inline">Your Guide to </span>
-                <span className="font-bold text-slate-100 w-[150px] sm:w-[170px] md:w-[200px] inline-block text-left">
+            <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl sm:text-2xl md:text-3xl font-medium text-slate-400 flex flex-wrap sm:flex-nowrap justify-center items-center gap-x-2">
+                <span>Your Guide to&nbsp;</span>
+                
+                {/* --- FINAL FIX IS HERE --- */}
+                <span className="font-bold text-slate-100 w-[150px] sm:w-[170px] md:w-[200px] inline-block text-center sm:text-left">
                     <span 
                         className={`
                             bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent
@@ -60,7 +61,6 @@ const Header: React.FC = () => {
                 </span>
             </h1>
 
-            {/* I've also updated the social icons to match the dark theme in case you uncomment them */}
             {/* <div className="flex items-center gap-2 sm:gap-4">
                 {socials.map((social, index) => (
                     <a 
