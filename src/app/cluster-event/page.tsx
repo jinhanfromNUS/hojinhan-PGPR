@@ -6,9 +6,27 @@ const PastClusterEventPage: React.FC = () => {
   const events = [
     // ... your events array remains the same
     {
+      title: 'Macs and Mahjong',
+      academicYear: 2526,
+      date: '12th April 2026',
+      time: '16:30 PM - 19:30 PM',
+      venue: 'Game room',
+      description: "Mahjong or MacDonalds? Why not both?!",
+      image: '/AY2526 Sem 2 Past Cluster Event 3.png',
+    },
+    {
+      title: 'Pizza Party',
+      academicYear: 2526,
+      date: '27th March 2026',
+      time: '18:00 PM - 20:00 PM',
+      venue: 'Block 8 Level 4 pantry',
+      description: "Cus who doesn't love a pizza :P",
+      image: '/AY2526 Sem 2 Past Cluster Event 2.jpg',
+    },
+    {
       title: 'Chill chat',
       academicYear: 2526,
-      date: '9th Febuary 2025',
+      date: '9th Febuary 2026',
       time: '21:00 PM - 23:00 PM',
       venue: 'Your room',
       description: "Wel... Hi :)",
